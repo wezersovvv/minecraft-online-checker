@@ -15,7 +15,7 @@ def get_online(ip, port=None):
     except:
         return 0
 
-#Убрать
+#Убрать1
 @client.command()
 async def send(ctx, *, text):
     await ctx.send(text)
