@@ -15,13 +15,12 @@ def get_online(ip, port=None):
     except:
         return 0
 
-#Убрать1
+
 @client.command()
 async def send(ctx, *, text):
     await ctx.send(text)
-#Убрать
 
-async def create_embed(desc, title, user, ip, port, players, color=0x2f3136):
+async def create_embed(desc, title, user, ip, port, players, color=0x2f7836):
     author = await client.fetch_user(user)
     embed=discord.Embed(title = title, description = desc, color=color)
     embed.add_field(name="Server Name", value=f"Test server")
@@ -40,13 +39,12 @@ async def change_status():
     embed = create_embed("text", "server name", 994243849071366234, "ip", "port", online)
 
     await edit_message(884003421072531518, 862449391109144638, embed)
-    await client.change_presense(acrivity=discord.Activity(type=discord.ActivityType.watching, name = f"for {online} players"))
+    await client.change_presense(acrivity=discord.Activity(type=discord.ActivityType.playing, name = f"{online} players"))
 
 @client.event
 async def on_ready():
     change_status.start()
+    print('We have logged in as {0.user}'.format(client))
+
 
 client.run("YOUR TOKEN HERE")
-
-
-        
