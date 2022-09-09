@@ -4,15 +4,15 @@ Discord bot for track online users at your minecraft server
 First, change the parameters in the file main.py, namely:
 
 
-embed.add_field(name="Server Name", value=f"Test server")
+d_text = "TechnoMagic 1.7.10"
 
-embed = create_embed("text", "server name", REPLACE WITH YOUR DISCORD ID, "ip", "port", online)
+embed.set_footer(text=f"by wezersovvv#9439")
 
-online = get_online("ip", "port")
+online = get_online("ip","port")
 
-await edit_message(CHANNEL ID, MESSAGE ID, embed)
+embed = await create_embed("Some Text", "Minecraft", 975839690471112744, servers=[{"ip": "IP", "port": "PORT", "players": get_online("ip","port"), "max_players": 2022}])
 
-client.run("YOUR TOKEN HERE")
+await edit_message(1007233683754856468, 1007234131123507260, embed)
 
 
 After editing the file, launch the bot, go to the channel specified in the config and send the command !send 1, then edit MESSAGE ID and restart the bot.
