@@ -14,6 +14,9 @@ def get_online(ip, port=None):
         return online
     except:
         return 0
+        
+
+
 
 async def create_embed(desc, title, user,servers = {}, color=0x2f3136):
     author = await client.fetch_user(user)
@@ -49,9 +52,22 @@ async def change_status():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"за {online} игроками"))
 
 
+
+
 @client.event
 async def on_ready():
     change_status.start()
-    print('bot is ready')
+    print('Bot connected')
     
-client.run("")
+@client.command()
+@commands.has_permissions(administrator=True)
+async def ping(ctx):
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+
+@client.command()
+@commands.has_permissions(administrator=True)
+async def send(ctx, channel, message):
+    channel = await client.fetch_channel(channel)
+    await channel.send(message)
+
+client.run("token")
